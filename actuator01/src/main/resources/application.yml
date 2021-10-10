@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8082
+#        instance:
+#          prefer-ip: false
+  application:
+    name: admin-client
+    
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+    healthcheck:
+      enabled: false
+           
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+         
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator #web根路径，默认/actuator
+    enabled-by-default: true   #true表示暴露endpoints，默认为true

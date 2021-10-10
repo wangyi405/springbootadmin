@@ -1,0 +1,24 @@
+server:
+  port: 8761         #web端口
+  
+spring:
+  application:
+    name: eureka-server   #应用名称
+  security:
+    user:
+      name: admin
+      password: admin
+    
+eureka:
+  instance:
+    hostname: eureka8761    #主机名称
+  client:
+    healthcheck:
+      enabled: true 
+    register-with-eureka: false   #注册到eureka
+    fetch-registry: false         #从注册中心获取服务列表
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/  #注册到服务中心的URL地址，多个通过逗号分隔
+  server:
+    enable-self-preservation: true   #true开启自我保护模式，
+    eviction-interval-timer-in-ms: 60000 #清理时间间隔，单位毫秒，默认60秒   
